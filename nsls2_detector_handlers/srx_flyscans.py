@@ -4,7 +4,7 @@ import h5py
 
 
 class ZebraHDF5Handler(HandlerBase):
-    HANDLER_NAME = 'ZEBRA_HDF51'
+    specs = {'ZEBRA_HDF51', 'SIS_HDF51'}
 
     def __init__(self, resource_fn):
         self._handle = h5py.File(resource_fn, 'r')

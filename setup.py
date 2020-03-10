@@ -47,6 +47,7 @@ setup(
     entry_points={
         'databroker.handlers': [
             'ZEBRA_HDF51 = nsls2_detector_handlers.srx_flyscans:ZebraHDF5Handler',
+            'SIS_HDF51 = nsls2_detector_handlers.srx_flyscans:ZebraHDF5Handler',
         ],
     },
     include_package_data=True,
