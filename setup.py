@@ -40,13 +40,13 @@ setup(
     description="Staging repo for handlers specific to NSLS-II",
     long_description=readme,
     author="Brookhaven National Laboratory",
-    author_email='',
+    author_email='dama@bnl.gov',
     url='https://github.com/bluesky/nsls2-detector-handlers',
     python_requires='>={}'.format('.'.join(str(n) for n in min_version)),
     packages=find_packages(exclude=['docs', 'tests']),
     entry_points={
-        'console_scripts': [
-            # 'command = some.module:some_function',
+        'databroker.handlers': [
+            'ZEBRA_HDF51 = nsls2_detector_handlers.srx_flyscans:ZebraHDF5Handler',
         ],
     },
     include_package_data=True,
