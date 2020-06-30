@@ -54,6 +54,7 @@ setup(
             'PIZZABOX_AN_FILE_TXT_PD = nsls2_detector_handlers.pizzabox:PizzaBoxAnHandlerTxtPD',
             'PIZZABOX_DI_FILE_TXT_PD = nsls2_detector_handlers.pizzabox:PizzaBoxDIHandlerTxtPD',
             'PIZZABOX_ENC_FILE_TXT_PD = nsls2_detector_handlers.pizzabox:PizzaBoxEncHandlerTxtPD',
+            'ELECTROMETER = nsls2_detector_handlers.electrometer:ElectrometerBinFileHandler',
         ],
     },
     include_package_data=True,
