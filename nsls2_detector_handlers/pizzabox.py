@@ -12,6 +12,7 @@ class PizzaBoxAnHandlerTxt(HandlerBase):
 
     def __init__(self, fpath, chunk_size):
         self.chunk_size = chunk_size
+        self.filename = fpath
         with open(fpath, 'r') as f:
             self.lines = list(f)
 
@@ -19,6 +20,9 @@ class PizzaBoxAnHandlerTxt(HandlerBase):
         cs = self.chunk_size
         return [self.encoder_row(*(int(v, base=b) for v, b in zip(ln.split(), self.bases)))
                 for ln in self.lines[chunk_num*cs:(chunk_num+1)*cs]]
+
+    def get_file_list(self, datum_kwargs_gen):
+        return [self.filename]
 
 
 class PizzaBoxDIHandlerTxt(HandlerBase):
@@ -28,6 +32,7 @@ class PizzaBoxDIHandlerTxt(HandlerBase):
 
     def __init__(self, fpath, chunk_size):
         self.chunk_size = chunk_size
+        self.filename = fpath
         with open(fpath, 'r') as f:
             self.lines = list(f)
 
@@ -35,6 +40,9 @@ class PizzaBoxDIHandlerTxt(HandlerBase):
         cs = self.chunk_size
         return [self.di_row(*(int(v) for v in ln.split()))
                 for ln in self.lines[chunk_num*cs:(chunk_num+1)*cs]]
+
+    def get_file_list(self, datum_kwargs_gen):
+        return [self.filename]
 
 
 class PizzaBoxEncHandlerTxt(HandlerBase):
@@ -45,6 +53,7 @@ class PizzaBoxEncHandlerTxt(HandlerBase):
 
     def __init__(self, fpath, chunk_size):
         self.chunk_size = chunk_size
+        self.filename = fpath
         with open(fpath, 'r') as f:
             self.lines = list(f)
 
@@ -53,6 +62,9 @@ class PizzaBoxEncHandlerTxt(HandlerBase):
         return [self.encoder_row(*(int(v) for v in ln.split()))
                 for ln in self.lines[chunk_num*cs:(chunk_num+1)*cs]]
 
+    def get_file_list(self, datum_kwargs_gen):
+        return [self.filename]
+
 
 # New handlers to support reading files into a Pandas dataframe
 class PizzaBoxAnHandlerTxtPD(HandlerBase):
@@ -60,9 +72,13 @@ class PizzaBoxAnHandlerTxtPD(HandlerBase):
 
     def __init__(self, fpath):
         self.df = pd.read_table(fpath, names=['ts_s', 'ts_ns', 'index', 'adc'], sep=' ')
+        self.filename = fpath
 
     def __call__(self):
         return self.df
+
+    def get_file_list(self, datum_kwargs_gen):
+        return [self.filename]
 
 
 class PizzaBoxDIHandlerTxtPD(HandlerBase):
@@ -70,9 +86,13 @@ class PizzaBoxDIHandlerTxtPD(HandlerBase):
 
     def __init__(self, fpath):
         self.df = pd.read_table(fpath, names=['ts_s', 'ts_ns', 'encoder', 'index', 'di'], sep=' ')
+        self.filename = fpath
 
     def __call__(self):
         return self.df
+
+    def get_file_list(self, datum_kwargs_gen):
+        return [self.filename]
 
 
 class PizzaBoxEncHandlerTxtPD(HandlerBase):
@@ -80,6 +100,10 @@ class PizzaBoxEncHandlerTxtPD(HandlerBase):
 
     def __init__(self, fpath):
         self.df = pd.read_table(fpath, names=['ts_s', 'ts_ns', 'encoder', 'index', 'state'], sep=' ')
+        self.filename = fpath
 
     def __call__(self):
         return self.df
+
+    def get_file_list(self, datum_kwargs_gen):
+        return [self.filename]
