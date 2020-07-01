@@ -1,6 +1,6 @@
-from . import HandlerBase
-
 import h5py
+
+from . import HandlerBase
 
 
 class ZebraHDF5Handler(HandlerBase):

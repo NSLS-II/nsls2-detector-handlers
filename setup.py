@@ -48,6 +48,13 @@ setup(
         'databroker.handlers': [
             'ZEBRA_HDF51 = nsls2_detector_handlers.srx_flyscans:ZebraHDF5Handler',
             'SIS_HDF51 = nsls2_detector_handlers.srx_flyscans:ZebraHDF5Handler',
+            'PIZZABOX_AN_FILE_TXT = nsls2_detector_handlers.pizzabox:PizzaBoxAnHandlerTxt',
+            'PIZZABOX_DI_FILE_TXT = nsls2_detector_handlers.pizzabox:PizzaBoxDIHandlerTxt',
+            'PIZZABOX_ENC_FILE_TXT = nsls2_detector_handlers.pizzabox:PizzaBoxEncHandlerTxt',
+            'PIZZABOX_AN_FILE_TXT_PD = nsls2_detector_handlers.pizzabox:PizzaBoxAnHandlerTxtPD',
+            'PIZZABOX_DI_FILE_TXT_PD = nsls2_detector_handlers.pizzabox:PizzaBoxDIHandlerTxtPD',
+            'PIZZABOX_ENC_FILE_TXT_PD = nsls2_detector_handlers.pizzabox:PizzaBoxEncHandlerTxtPD',
+            'ELECTROMETER = nsls2_detector_handlers.electrometer:ElectrometerBinFileHandler',
         ],
     },
     include_package_data=True,
