@@ -12,7 +12,7 @@ class ElectrometerBinFileHandler(HandlerBase):
     def __init__(self, fpath):
         # It's a text config file, which we don't store in the resources yet, parsing for now
         fpath_txt = f'{os.path.splitext(fpath)[0]}.txt'
-        self.filename = fpath
+        self.files = [fpath, fpath_txt]
 
         with open(fpath_txt, 'r') as fp:
             N = int(fp.readline().split(':')[1])
@@ -59,4 +59,4 @@ class ElectrometerBinFileHandler(HandlerBase):
         return self.df, self.raw_data
 
     def get_file_list(self, datum_kwargs_gen):
-        return [self.filename]
+        return self.files
