@@ -1,6 +1,7 @@
+from collections import namedtuple
+
 import pandas as pd
 
-from collections import namedtuple
 from . import HandlerBase
 
 
