@@ -49,9 +49,7 @@ class ElectrometerBinFileHandler(HandlerBase):
             derived_data[:, 3] = Rc * ((raw_data[:, 2] / FAdiv) - Offsets[2]) / Gains[2]
             derived_data[:, 4] = Rd * ((raw_data[:, 3] / FAdiv) - Offsets[3]) / Gains[3]
 
-        self.df = pd.DataFrame(
-            data=derived_data, columns=["timestamp", "i0", "it", "ir", "iff"]
-        )
+        self.df = pd.DataFrame(data=derived_data, columns=["timestamp", "i0", "it", "ir", "iff"])
         self.raw_data = raw_data
 
     def __call__(self):

@@ -53,9 +53,7 @@ class PizzaBoxDIHandlerTxt(HandlerBase):
 class PizzaBoxEncHandlerTxt(HandlerBase):
     """Read PizzaBox text files using info from filestore."""
 
-    encoder_row = namedtuple(
-        "encoder_row", ["ts_s", "ts_ns", "encoder", "index", "state"]
-    )
+    encoder_row = namedtuple("encoder_row", ["ts_s", "ts_ns", "encoder", "index", "state"])
 
     def __init__(self, fpath, chunk_size):
         self.chunk_size = chunk_size
@@ -93,9 +91,7 @@ class PizzaBoxDIHandlerTxtPD(HandlerBase):
     """Read PizzaBox text files using info from filestore."""
 
     def __init__(self, fpath):
-        self.df = pd.read_table(
-            fpath, names=["ts_s", "ts_ns", "encoder", "index", "di"], sep=" "
-        )
+        self.df = pd.read_table(fpath, names=["ts_s", "ts_ns", "encoder", "index", "di"], sep=" ")
         self.filename = fpath
 
     def __call__(self):
@@ -109,9 +105,7 @@ class PizzaBoxEncHandlerTxtPD(HandlerBase):
     """Read PizzaBox text files using info from filestore."""
 
     def __init__(self, fpath):
-        self.df = pd.read_table(
-            fpath, names=["ts_s", "ts_ns", "encoder", "index", "state"], sep=" "
-        )
+        self.df = pd.read_table(fpath, names=["ts_s", "ts_ns", "encoder", "index", "state"], sep=" ")
         self.filename = fpath
 
     def __call__(self):
