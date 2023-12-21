@@ -1,6 +1,11 @@
-from . import HandlerBase
+import os
+
 import h5py
+import numpy as np
 import tifffile
+
+from . import HandlerBase
+
 
 class AreaDetectorTiffHandlerGERM(HandlerBase):
     specs = {"AD_TIFF_GERM"}
@@ -17,6 +22,7 @@ class AreaDetectorTiffHandlerGERM(HandlerBase):
 
 class AreaDetectorHDF5HandlerGERM(HandlerBase):
     specs = {"AD_HDF5_GERM"}
+
     def __init__(self, filename):
         self._name = filename
 
