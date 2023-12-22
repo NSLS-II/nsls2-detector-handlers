@@ -5,7 +5,10 @@ name: Upload Python Package
 
 on:
   release:
-    types: [created]
+    types:
+      - created
+      - opened
+      - ready_for_review
 
 jobs:
   deploy:
