@@ -1,8 +1,11 @@
-from . import HandlerBase
 import h5py
+
+from . import HandlerBase
+
 
 class VideoStreamHDF5Handler(HandlerBase):
     specs = {"VIDEO_STREAM_HDF5"}
+
     def __init__(self, filename):
         self._name = filename
 
